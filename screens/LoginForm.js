@@ -36,7 +36,7 @@ class LoginForm extends Component {
         const {navigation, auth} = this.props
         return (
             <View style={styles.container}>
-            <Image source={require('../assets/work3.png')}
+            <Image source={require('../assets/case1.png')}
                 style={styles.logo}
             />
              {/* Form Validation */}
@@ -46,7 +46,8 @@ class LoginForm extends Component {
                 {auth.error.login}
                 </Text>
             }
-            <Text style={styles.text}>GovProp</Text>
+            <Text style={styles.text}>Case Target</Text>
+      
             {/* Email Field*/}
             <FormInput
                 onChangeText={(text)=>

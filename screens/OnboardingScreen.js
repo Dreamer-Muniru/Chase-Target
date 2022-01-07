@@ -33,21 +33,21 @@ const OnboardingScreen = ({navigation}) => {
             {
             backgroundColor: '#a6e4d0',
             image: <Image source={require('../assets/work4.png')} />,
-            title: 'Onboarding 1',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            title: 'Case Target',
+            subtitle: 'Welcome to Chase Tag. Set and save toward your target',
             },
             
             {
             backgroundColor: '#fff',
             image: <Image source={require('../assets/work3.png')} />,
-            title: 'Feel free to Signup 2',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            title: 'Save for Future',
+            subtitle: 'Remember your destiny is in your own hands.',
            },
             {
             backgroundColor: '#fff',
             image: <Image source={require('../assets/sleekjob.png')} />,
-            title: 'You can also login here 3',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            title: 'Create an Account',
+            subtitle: 'Create an account for free and start saving now!',
            },
   ]}
 />

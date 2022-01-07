@@ -1,90 +1,128 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import { Container, } from '../styles/AppStyles';
-import { StatusBar } from 'expo-status-bar';
-import Header from './Header';
-import ListItems from './ListItems';
-import InputModal from './InputModal';
+import React, { useState, Component } from 'react';
+import { View, Text, Image,
+     ScrollView, StyleSheet, 
+     TouchableOpacity } 
+     from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+
+
+import TransferMoney from '../screens/TransferMoney';
+import {connect} from 'react-redux';
 
 const HomeScreen = () => {
-    //Initial Targets
-    const initialTodos =[{
-        title: "Buy a new Laptop",
-        date: "Tues, 24 Nov. 2021 16:22:11 GMT",
-        key: "1"
-    },
-    {
-        title: "Buy a House",
-        date: "Tues, 24 Nov. 2021 13:22:11 GMT",
-        key: "2"
-    },
-    {
-        title: "Buy a Benz",
-        date: "Tues, 24 Nov. 2021 19:12:11 GMT",
-        key: "3"
-    }
-]
+    return (
+            <View style={styles.container}>
+           <View>
+                <Text style={styles.heading_text}>Set up a Target and start Saving now!</Text>
+                {/* <Text style={{color: 'red', fontSize:30}}>
+                    Name:{surname}
+                </Text> */}
+                
+            </View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <TouchableOpacity style={styles.dream}>
+                <MaterialIcons name="settings-system-daydream" style={{marginLeft:30}} size={120} color="white" />
+                    <Text style={styles.goal_text}>Dream Big</Text>
+                </TouchableOpacity>
 
-const [todos, setTodos] = useState(initialTodos);
-//clearing all targets
-const handleClearTodos = () =>{
-    setTodos([])
-}
+                <TouchableOpacity  style={styles.goal} >
+                <AntDesign name="pay-circle1" style={{marginLeft:20}} size={120} color="white" />
+                    <Text style={styles.goal_text}>Set Goals</Text>
+                </TouchableOpacity>
 
-//modal visibility
-const [modalVisible, setModalVisible] = useState(false)
+                <TouchableOpacity  style={styles.action}>
+                    <Entypo name="man" size={120} style={{marginLeft:28}} color="white" />
+                    <Text style={styles.action_text}>Take Action</Text>
+                </TouchableOpacity>
+            </ScrollView>
 
-//Input Value
-const [todoInputValue, setTodoInputValue] = useState();
-
-//adding targets
-const handleAddTodo = (todo) =>{
-    const newTodos = [...todos, todo];
-    setTodos(newTodos);
-    setModalVisible(false);
-}
-const [todoToBeEdited, setTodoToBeEdited] = useState(null);
-//Editting Targets
-const handleTriggerEdit = (item) =>{
-    setTodoToBeEdited(item);
-    setModalVisible(true);
-    setTodoInputValue(item.title)
-}
-
-const handleEditTodo = (editedTodo) =>{
-    const newTodos = [...todos];
-    const todoIndex = todos.findIndex((todo) => todo.key === editedTodo.key);
-    newTodos.splice(todoIndex, 1, editedTodo);
-    setTodos(newTodos);
-    setTodoToBeEdited(null)
-    setModalVisible(false)
-}
-
-return (
-        <Container>
-            <>
-            <Header handleClearTodos={handleClearTodos}/>
-            <ListItems todos={todos} setTodos={setTodos} 
-                handleTriggerEdit={handleTriggerEdit}
-            />
-            <InputModal 
-                todoInputValue={todoInputValue}
-                setTodoInputValue={setTodoInputValue}
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-                handleAddTodo={handleAddTodo}
-                todoToBeEdited={todoToBeEdited}
-                setTodoToBeEdited={setTodoToBeEdited}
-                todos={todos}
-                handleEditTodo={handleEditTodo}
-            />
-                <StatusBar style="" />
-            </>
-        </Container>
+       </View>
     )
 }
 
 
 
-export default HomeScreen
+const styles = StyleSheet.create({
+    container:{
+        backgroundColor: '#fff'
+    },
+    image:{
+        width: 120,
+        height: 120,
+        borderRadius: 20,
+        margin: 5
+    },
+    dream:{
+        width: 200,
+        height: 200,
+        padding: 10,     
+        margin: 10,
+        backgroundColor: '#00bfff',
+        borderRadius: 10,
+        justifyContent: 'center',
+    },
+
+    goal:{
+        width: 200,
+        height: 200,
+        paddingLeft: 20,       
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        backgroundColor: '#00bfff',
+        
+        
+    },
+
+    action:{
+        width: 200,
+        height: 200,
+        padding: 10,     
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        backgroundColor: '#00bfff',
+        
+    },
+    dream_text:{
+        color: '#000',
+        fontSize: 15,
+        justifyContent: 'center',
+        textAlign: 'center',
+        fontWeight: 'bold',
+    
+    },  
+    goal_text:{
+        color: '#fff',
+        fontSize: 15,
+        justifyContent: 'center',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        paddingTop: 5
+    },
+    action_text:{
+        color: '#fff',
+        fontSize: 15,
+        justifyContent: 'center',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        paddingTop: 5
+    },    
+    heading_text:{
+        justifyContent: 'center',
+        textAlign: 'center',
+        margin: 20,
+        fontSize: 20,
+
+    }
+})
+
+const mapStateToProps =(state) =>{
+    return {
+        auth:state,
+    
+    }
+}
+export default connect(mapStateToProps)(HomeScreen)

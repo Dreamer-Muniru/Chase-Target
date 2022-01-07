@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-
+import { View, Text, Image,
+  ScrollView, StyleSheet, 
+  TouchableOpacity } 
+  from 'react-native';
 // styled components
 import {
   ListView,
@@ -36,7 +39,7 @@ const ListItems = ({ todos, setTodos, handleTriggerEdit }) => {
 
   return (
     <>
-      {todos.length == 0 && <TodoText>You have no todos today</TodoText>}
+      {todos.length == 0 && <TodoText>You have no Target at the Moment</TodoText>}
       {todos.length != 0 && (
         <SwipeListView
           data={todos}
@@ -51,8 +54,12 @@ const ListItems = ({ todos, setTodos, handleTriggerEdit }) => {
                 }}
               >
                 <>
-                  <RowText>{data.item.title}</RowText>
+                  <RowText>{data.item.target}</RowText>
+                  <RowText>{data.item.amount}</RowText>
+                  <RowText>{data.item.duration}</RowText>
                   <TodoDate>{data.item.date}</TodoDate>
+                  {/* <RowText>{data.item.duration}</RowText>
+                  <TodoDate>{data.item.date}</TodoDate> */}
                 </>
               </ListView>
             );
@@ -62,7 +69,7 @@ const ListItems = ({ todos, setTodos, handleTriggerEdit }) => {
               <HiddenButton
                 onPress={() => handleDeleteTodo(rowMap, data.item.key)}
               >
-                <Entypo name="trash" size={25} color={colors.secondary} />
+                <Entypo name="trash" size={40} style={{marginTop: 20}} color="white"/>
               </HiddenButton>
             </ListViewHidden>
           )}

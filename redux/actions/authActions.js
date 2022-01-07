@@ -1,31 +1,33 @@
 import firebase from '../../firebase/firebase';
 
 export function createEmailAccount(email, password){
-    return async(dispatch) =>{
-        try {
-           const user= await firebase
-                .auth().
-                createUserWithEmailAndPassword(email, password)
-            dispatch(loggedIn(user))
-        } catch (error){
-            console.log(error)
+    return async (dispatch) =>{
+        try{
+           const user = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            console.log(user)
+          dispatch(loggedIn(user))
+            }catch(error){
+                dispatch(registerError(error.message))
+            
         }
     }
 }
 
 export function loginEmailAccount(email, password){
-    return async(dispatch) =>{
-        try {
+    return async (dispatch) =>{
+        try{
             const user = await firebase
-                .auth().
-                signInWithEmailAndPassword(email, password)
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+                console.log(user)
             dispatch(loggedIn(user))
-         } catch (error){
-             console.log(error)
-         }
+        } catch(error){
+            dispatch(loginError(error.message))
+        }
     }
 }
-
 
 export function logout(){
     return async (dispatch) =>{

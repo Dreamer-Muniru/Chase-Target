@@ -9,7 +9,6 @@ const persistConfig ={
     storage: AsyncStorage
 }
 
-
 const persistedReducer = persistReducer(persistConfig, AuthReducer)
 let store = createStore(persistedReducer, applyMiddleware(thunk))
 

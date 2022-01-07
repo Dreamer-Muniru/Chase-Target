@@ -11,16 +11,19 @@ import Constants from "expo-constants";
 
 // Colors
 export const colors = {
-  primary: "#332424",
-  secondary: "#4D3636",
+  primary: "#d2691e",
+  secondary: "#800000",
   tertiary: "#E6E6E6",
   alternative: "#999999",
+  white: "#fff",
+  black: "#000",
+  mainColor: "#00bfff"
 };
 
 const statusBarHeight = Constants.statusBarHeight;
 
 export const Container = styled.SafeAreaView`
-  background-color: ${colors.primary};
+  background-color: ${colors.white};
   padding: 20px;
   padding-bottom: 0px;
   flex: 1;
@@ -39,9 +42,10 @@ export const HeaderView = styled.View`
 export const HeaderTitle = styled.Text`
   font-size: 35px;
   font-weight: bold;
-  color: ${colors.tertiary};
-  letter-spacing: 2px;
-  font-style: italic;
+  color: #000
+  letter-spacing: 1px;
+  
+  
 `;
 export const HeaderButton = styled.TouchableOpacity`
   font-weight: bold;
@@ -56,7 +60,7 @@ export const ListContainer = styled.View`
 `;
 
 export const ListView = styled.TouchableHighlight`
-  background-color: ${colors.secondary};
+  background-color: #00bfff;
   min-height: 85px;
   width: 100%;
   padding: 15px;
@@ -66,7 +70,7 @@ export const ListView = styled.TouchableHighlight`
 `;
 
 export const ListViewHidden = styled.View`
-  background-color: ${colors.tertiary};
+  background-color: #add8e6;
   min-height: 85px;
   width: 100%;
   padding: 15px;
@@ -78,19 +82,22 @@ export const ListViewHidden = styled.View`
 
 export const HiddenButton = styled.TouchableOpacity`
   width: 55px;
+  height: 80px;
   align-items: center;
 `;
 
 export const TodoText = styled.Text`
   font-size: 16px;
   letter-spacing: 1px;
-  color: ${colors.tertiary};
+  color: black;
+  color: #fff;
+  font-weight: bold;
 `;
 
 export const TodoDate = styled.Text`
   font-size: 10px;
   letter-spacing: 1px;
-  color: ${colors.alternative};
+  color: #fff;
   text-align: right;
   text-transform: uppercase;
 `;
@@ -102,11 +109,11 @@ export const SwipedTodoText = styled(TodoText)`
   text-decoration: line-through;
 `;
 
-// Modal
+// Modal Buttom
 export const ModalButton = styled.TouchableOpacity`
   width: 60px;
   height: 60px;
-  background-color: ${colors.tertiary};
+  background-color: #00bfff;
   border-radius: 50px;
   justify-content: center;
   align-items: center;
@@ -120,17 +127,18 @@ export const ModalContainer = styled.View`
   justify-content: center;
   align-items: center;
   flex: 1;
-  background-color: ${colors.primary};
+  background-color: #f5fffa;
 `;
 
 export const ModalView = styled.View`
-  background-color: ${colors.secondary};
+  background-color: #00bfff;
   border-radius: 20px;
   padding: 35px;
 `;
 
 export const StyledInput = styled.TextInput`
   width: 300px;
+  margin-bottom: 20px;
   height: 50px;
   background-color: ${colors.tertiary};
   padding: 10px;
@@ -139,6 +147,19 @@ export const StyledInput = styled.TextInput`
   color: ${colors.secondary};
   letter-spacing: 1px;
 `;
+
+// export const NumberInput = styled.NumericInput`
+//   width: 300px;
+//   margin-bottom: 20px;
+//   height: 50px;
+//   background-color: ${colors.tertiary};
+//   padding: 10px;
+//   font-size: 16px;
+//   border-radius: 10px;
+//   color: ${colors.secondary};NumericInput
+//   letter-spacing: 1px;
+// `;
+
 
 export const ModalAction = styled.TouchableOpacity`
   width: 60px;
@@ -160,3 +181,86 @@ export const ModalIcon = styled.View`
   align-items: center;
   margin-bottom: 30px;
 `;
+
+// Wallet Styling
+
+export const WalletContainer = styled.View`
+  
+`;
+export const Balance = styled.View`
+  background-color: #00bfff;
+  width: 80%;
+  height: 150px;
+  left: 30px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  
+`;
+
+export const AccountName = styled.Text`
+  font-size: 25px;
+  font-weight: bold
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  
+`;
+
+export const AccountInfo = styled.Text`
+  justify-content: center;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold
+  color: #fff;
+`;
+
+export const DepositCol =styled.View`
+  
+`;
+
+export const TransferCol =styled.View`
+  
+`;
+
+export const DepositButton =styled.TouchableOpacity`
+  height: 50px;
+  background-color: #00bfff;
+  border-radius: 5px;
+  margin-right: 20px;
+`;
+
+export const TransferButton =styled.TouchableOpacity`
+  height: 50px;
+  background-color: #00bfff;
+  border-radius: 5px;
+`;
+
+export const BtnText =styled.Text`
+  color: #fff;
+  fontSize: 20px;
+  padding: 10px;
+  font-weight: bold;
+`;
+
+export const WalletRow =styled.View`
+  margin: auto;
+  margin-bottom: 100px;
+`;
+
+
+export const Transaction =styled.View`
+  background-color: #fffafa;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+`;
+
+export const TransactionText =styled.Text`
+  font-weight: bold;
+  text-align: center;
+`;
+
+// End of Wallet Styling

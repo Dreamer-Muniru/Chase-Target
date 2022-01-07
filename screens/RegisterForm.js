@@ -6,11 +6,11 @@ import {connect} from 'react-redux';
 import {createEmailAccount, registerError} from '../redux/actions/authActions';
 import {windowHeight, windowWidth} from '../utils/dimentions';
 
-
 class RegisterForm extends Component {
     constructor(props){
         super(props)
         this.state={
+          surname: "",
           email: "",
           password: "",
           confirm: ""
@@ -28,7 +28,7 @@ class RegisterForm extends Component {
           this.props.registerError("Passwords do not match")
           return;
         }
-        this.props.createEmailAccount(this.state.email, this.state.password)
+        this.props.createEmailAccount(this.state.surname, this.state.email, this.state.password)
       }
     render() {
         const {navigation, auth} = this.props
@@ -38,15 +38,27 @@ class RegisterForm extends Component {
         return (
 
             <View style={styles.container}>
-                <Text style={styles.text}>GovProp</Text>
+                <Text style={styles.heading_text }>CHASE TARGET</Text>
                 <Text style={styles.text}>Create an Account</Text>
                 {/* Form Validation */}
                 {
-                      auth.error.register &&
-                      <Text style={{color: 'red'}}>
-                      {auth.error.register}
-                      </Text>
-                    }
+                    auth.error.register &&
+                    <Text style={{color: 'red'}}>
+                    {auth.error.register}
+                    </Text>
+                }
+                 {/* Surname Field*/}
+                 <FormInput
+                    // lableValue={email} 
+                    value={this.state.surname}
+                    onChangeText={(text) => 
+                        {this.handleUpdateState('surname', text)
+                    }}
+                    placeholderText='Surname'
+                    iconType='user'
+                    autoCorrect={false}
+                    
+                />
                 {/* Email Field*/}
                 <FormInput
                     // lableValue={email} 
@@ -138,15 +150,17 @@ class RegisterForm extends Component {
             
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#f9fafd',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
       },
-
+      heading_text:{
+          color: '#d2691e',
+          fontSize: 30,
+      },
       text:{
-          fontSize: 28,
+          fontSize: 20,
           marginBottom: 10,
           color: '#051d5f'
       },
